@@ -27,38 +27,33 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| nickname        | string | null: false |
-| password        | string | null: false |
-| email           | string | null: false |
-| first_name      | string | null: false |
-| last_name       | string | null: false |
-| first_name_kana | string | null: false |
-| last_name_kana  | string | null: false |
-| birth_year      | string | null: false |
-| birth_month     | string | null: false |
-| birth_day       | string | null: false |
+| Column             | Type   | Options      |
+| ------------------ | ------ | ------------ |
+| nickname           | string | null: false  |
+| encrypted_password | string | null: false  |
+| email              | string | unique: true |
+| first_name         | string | null: false  |
+| last_name          | string | null: false  |
+| first_name_kana    | string | null: false  |
+| last_name_kana     | string | null: false  |
+| birth_year         | date   | null: false  |
+| birth_month        | date   | null: false  |
+| birth_day          | date   | null: false  |
 
 ### Association
-- has_many :users
+- has_many :items
 - has_many :purchases
 
 
 ## items テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| name           | string     | null: false                    |
-| introduction   | text       | null: false                    |
-| category       | string     | null: false                    |
-| item_condition | string     | null: false                    |
-| delivery_fee   | string     | null: false                    |
-| shipping_area  | string     | null: false                    | 
-| shipping_days  | string     | null: false                    |
-| price          | string     | null: false                    |
-| seller         | string     | null: false                    |
-| user_id        | references | null: false, foreign_key: true |
+| Column         | Type        | Options                        |
+| -------------- | ----------- | ------------------------------ |
+| name           | string      | null: false                    |
+| introduction   | text        | null: false                    |
+| genre_id       | integer     | null: false                    |
+| price          | string      | null: false                    |
+| user           | references  | null: false, foreign_key: true |
 
 
 ### Association
@@ -70,8 +65,8 @@ Things you may want to cover:
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| buyer      | string     | null: false                    |
-| item_id    | references | null: false, foreign_key: true |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :item
@@ -81,14 +76,15 @@ Things you may want to cover:
 
 ## shipping_address テーブル
 
-| Column         | Type       | Options     |
-| -------------- | ---------- | ----------- |
-| postal_code    | string     | null: false |
-| prefecture     | string     | null: false | 
-| municipalities | string     | null: false |
-| address        | string     | null: false |
-| bulilding_name | string     | null: false |
-| phone_num      | string     | null: false |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| postal_code    | string     | null: false                    | 
+| genre_id       | integer    | null: false                    |
+| municipalities | string     | null: false                    |
+| address        | string     | null: false                    |
+| building_name  | string     |                                |
+| phone_num      | string     | null: false                    |
+| purchase       | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
