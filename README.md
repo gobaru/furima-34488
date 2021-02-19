@@ -54,7 +54,7 @@ Things you may want to cover:
 | category_id       | integer     | null: false                    |
 | delivery_fee_id   | integer     | null: false                    |
 | item_condition_id | integer     | null: false                    |
-| shipping_area_id  | integer     | null: false                    |
+| prefecture_id     | integer     | null: false                    |
 | shipping_day_id   | integer     | null: false                    |
 
 
