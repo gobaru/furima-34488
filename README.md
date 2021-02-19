@@ -27,16 +27,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column             | Type   | Options      |
-| ------------------ | ------ | ------------ |
-| nickname           | string | null: false  |
-| encrypted_password | string | null: false  |
-| email              | string | unique: true |
-| first_name         | string | null: false  |
-| last_name          | string | null: false  |
-| first_name_kana    | string | null: false  |
-| last_name_kana     | string | null: false  |
-| birthday           | date   | null: false  |
+| Column             | Type   | Options                    |
+| ------------------ | ------ | -------------------------- |
+| nickname           | string | null: false                |
+| encrypted_password | string | null: false                |
+| email              | string | unique: true, null: false  |
+| first_name         | string | null: false                |
+| last_name          | string | null: false                |
+| first_name_kana    | string | null: false                |
+| last_name_kana     | string | null: false                |
+| birthday           | date   | null: false                |
 
 ### Association
 - has_many :items
@@ -51,11 +51,11 @@ Things you may want to cover:
 | introduction      | text        | null: false                    |
 | price             | integer     | null: false                    |
 | user              | references  | null: false, foreign_key: true |
-| category.rb       | integer     | null: false                    |
-| delivery_fee.rb   | references  | null: false                    |
-| item_condition.rb | integer     | null: false                    |
-| shipping_area.rb  | references  | null: false                    |
-| shipping_days.rb  | integer     | null: false                    |
+| category_id       | integer     | null: false                    |
+| delivery_fee_id   | integer     | null: false                    |
+| item_condition_id | integer     | null: false                    |
+| shipping_area_id  | integer     | null: false                    |
+| shipping_day_id   | integer     | null: false                    |
 
 
 ### Association
