@@ -36,9 +36,7 @@ Things you may want to cover:
 | last_name          | string | null: false  |
 | first_name_kana    | string | null: false  |
 | last_name_kana     | string | null: false  |
-| birth_year         | date   | null: false  |
-| birth_month        | date   | null: false  |
-| birth_day          | date   | null: false  |
+| birthday           | date   | null: false  |
 
 ### Association
 - has_many :items
@@ -47,13 +45,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column         | Type        | Options                        |
-| -------------- | ----------- | ------------------------------ |
-| name           | string      | null: false                    |
-| introduction   | text        | null: false                    |
-| genre_id       | integer     | null: false                    |
-| price          | string      | null: false                    |
-| user           | references  | null: false, foreign_key: true |
+| Column            | Type        | Options                        |
+| ----------------- | ----------- | ------------------------------ |
+| name              | string      | null: false                    |
+| introduction      | text        | null: false                    |
+| price             | integer     | null: false                    |
+| user              | references  | null: false, foreign_key: true |
+| category.rb       | integer     | null: false                    |
+| delivery_fee.rb   | references  | null: false                    |
+| item_condition.rb | integer     | null: false                    |
+| shipping_area.rb  | references  | null: false                    |
+| shipping_days.rb  | integer     | null: false                    |
 
 
 ### Association
@@ -79,7 +81,7 @@ Things you may want to cover:
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | postal_code    | string     | null: false                    | 
-| genre_id       | integer    | null: false                    |
+| prefecture_id  | integer    | null: false                    |
 | municipalities | string     | null: false                    |
 | address        | string     | null: false                    |
 | building_name  | string     |                                |
