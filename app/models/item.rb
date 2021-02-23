@@ -7,9 +7,8 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
   has_one_attached :image
 
-
   # validates :category, :delivery_fee, :item_condition, :prefecture, :shipping_day, presence: true
-  validates :category_id, :delivery_fee_id, :item_condition_id, :prefecture_id, :shipping_day_id, numericality: { other_than: 1 } 
+  validates :category_id, :delivery_fee_id, :item_condition_id, :prefecture_id, :shipping_day_id, numericality: { other_than: 1 }
 
   with_options presence: true do
     validates :image
@@ -22,11 +21,10 @@ class Item < ApplicationRecord
     validates :shipping_day_id
   end
 
-  with_options presence: true, format: { with: /\A[-]?[0-9]+(\.[0-9]+)?\z/, message: 'Half-width number' } do
+  with_options presence: true, format: { with: /\A-?[0-9]+(\.[0-9]+)?\z/, message: 'Half-width number' } do
     validates :price
   end
 
   validates :price,
-  numericality: {greater_than: 299, less_than: 9999999}
-
+            numericality: { greater_than: 299, less_than: 9_999_999 }
 end

@@ -11,7 +11,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
     end
-  
+
     context '出品登録できないとき' do
       it 'imageが空では登録できない' do
         @item.image = nil
@@ -70,28 +70,26 @@ RSpec.describe Item, type: :model do
       it 'priceが全角文字では登録できない' do
         @item.price = 'あいう'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
       it 'priceが全角数字では登録できない' do
         @item.price = '１２３'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
       it 'priceが¥299以下では登録できない' do
         @item.price = 10
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than 299")
+        expect(@item.errors.full_messages).to include('Price must be greater than 299')
       end
 
       it 'priceが¥10,000,000以上では登録できない' do
-        @item.price = 11111111
+        @item.price = 11_111_111
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than 9999999')
       end
-
-
     end
   end
 end
