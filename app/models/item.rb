@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   with_options presence: true, format: { with: /\A-?[0-9]+(\.[0-9]+)?\z/, message: 'Half-width number' } do
     validates :price
   end
-
+  belongs_to :user
   validates :price,
             numericality: { greater_than: 299, less_than: 10_000_000 }
 end
