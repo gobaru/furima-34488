@@ -37,8 +37,20 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
+      it 'category_idが1では登録できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+
       it 'item_condition_idが空では登録できない' do
         @item.item_condition_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item condition can't be blank")
+      end
+
+      it 'item_condition_idが1では登録できない' do
+        @item.item_condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Item condition can't be blank")
       end
@@ -49,14 +61,32 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
       end
 
+      it 'delivery_fee_idが1では登録できない' do
+        @item.delivery_fee_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
+      end
+
       it 'prefecture_idが空では登録できない' do
         @item.prefecture_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
+      it 'prefecture_idが1では登録できない' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+      end
+
       it 'shipping_day_idが空では登録できない' do
         @item.shipping_day_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping day can't be blank")
+      end
+
+      it 'shipping_day_idが1では登録できない' do
+        @item.shipping_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping day can't be blank")
       end
@@ -88,7 +118,7 @@ RSpec.describe Item, type: :model do
       it 'priceが¥10,000,000以上では登録できない' do
         @item.price = 11_111_111
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be less than 9999999')
+        expect(@item.errors.full_messages).to include('Price must be less than 10000000')
       end
     end
   end
