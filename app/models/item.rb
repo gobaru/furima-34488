@@ -21,7 +21,7 @@ class Item < ApplicationRecord
   validates :category_id, :delivery_fee_id, :item_condition_id, :prefecture_id, :shipping_day_id,
             numericality: { other_than: 1, message: "can't be blank" }
 
-  with_options presence: true, format: { with: /\A-?[0-9]+(\.[0-9]+)?\z/, message: 'Half-width number' } do
+  with_options presence: true, format: { with: /\A-?[0-9]+(\.[0-9]+)?\z/, message: 'Half-width number', allow_blank: true } do
     validates :price
   end
   belongs_to :user
