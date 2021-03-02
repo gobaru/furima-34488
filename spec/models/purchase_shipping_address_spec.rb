@@ -68,6 +68,12 @@ RSpec.describe PurchaseShippingAddress, type: :model do
         @purchase_shipping_address.valid?
         expect(@purchase_shipping_address.errors.full_messages).to include('Phone num maximum 11 characters')
       end
+
+      it 'tokenがなければ登録できない' do
+        @purchase_shipping_address.token = ''
+        @purchase_shipping_address.valid?
+        expect(@purchase_shipping_address.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end

@@ -1,7 +1,8 @@
 class PurchaseShippingAddress
+  attr_accessor :token, :user_id, :item_id, :prefecture_id, :purchase_id, :postal_code, :municipalities, :address,
+                :building_name, :phone_num
+
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :prefecture_id, :purchase_id, :postal_code, :municipalities, :address, :building_name,
-                :phone_num
 
   with_options presence: true do
     validates :user_id
@@ -12,6 +13,7 @@ class PurchaseShippingAddress
     validates :address
     validates :phone_num, format: { with: /\A[0-9]+\z/, message: 'Half-width number' }
     validates :phone_num, format: { with: /\A\d{10,11}\z/, message: 'maximum 11 characters' }
+    validates :token
   end
 
   def save
