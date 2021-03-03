@@ -50,7 +50,7 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       end
 
       it 'prefecture_idが1では登録できない' do
-        @purchase_shipping_address.prefecture_id = '1'
+        @purchase_shipping_address.prefecture_id = 1
         @purchase_shipping_address.valid?
         expect(@purchase_shipping_address.errors.full_messages).to include("Prefecture can't be blank")
       end
